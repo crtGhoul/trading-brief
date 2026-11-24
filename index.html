@@ -1,0 +1,549 @@
+<!DOCTYPE html><html lang='en'><head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<title>Trading Brief — Fri Nov 27, 2026</title><style>
+:root{
+  --bg:#0a0a0c; --panel:#131216; --panel2:#0e0e11;
+  --gold:#d4af37; --gold-dim:#c9a227; --gold-faint:rgba(212,175,55,.5);
+  --gold-faint2:rgba(212,175,55,.22);
+  --cream:#f2ead8; --text:#ece5d3; --muted:#b8ad93;
+  --red:#e07a70; --green:#7fc98f; --amber:#e0a63c;
+}
+*{box-sizing:border-box}
+body{margin:0;color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  line-height:1.5;
+  background:
+    radial-gradient(1200px 500px at 50% -10%, rgba(212,175,55,.07), transparent 60%),
+    repeating-linear-gradient(45deg, rgba(255,255,255,.014) 0 2px, transparent 2px 6px),
+    repeating-linear-gradient(-45deg, rgba(255,255,255,.014) 0 2px, transparent 2px 6px),
+    var(--bg);}
+.wrap{max-width:720px;margin:0 auto;padding:18px 14px 48px}
+.eyebrow{text-align:center;letter-spacing:.38em;color:var(--gold);font-size:12px;font-weight:600}
+h1{font-family:Georgia,"Times New Roman",serif;font-size:36px;line-height:1.05;
+  color:var(--gold);text-align:center;margin:10px 0 4px;letter-spacing:.02em}
+.subtitle{text-align:center;color:var(--gold);font-family:Georgia,serif;font-size:19px;margin:0 0 4px}
+.rule{display:flex;align-items:center;gap:12px;color:var(--gold);margin:14px 0;font-size:11px}
+.rule::before,.rule::after{content:"";flex:1;height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold-faint),transparent)}
+h2{font-family:Georgia,"Times New Roman",serif;font-size:19px;margin:0 0 10px;
+  color:var(--gold);letter-spacing:.05em;text-transform:uppercase}
+h3{font-family:Georgia,serif;font-size:16px;color:var(--gold);margin:16px 0 6px}
+.card{background:linear-gradient(180deg,var(--panel),var(--panel2));
+  border:1px solid var(--gold-faint);outline:1px solid var(--gold-faint2);
+  outline-offset:4px;border-radius:6px;padding:16px;margin:20px 0}
+.muted{color:var(--muted);font-size:13px}
+.center{text-align:center}
+.big{font-family:Georgia,"Times New Roman",serif;font-size:38px;font-weight:700;
+  line-height:1.1;color:var(--gold);text-align:center}
+.badge{display:inline-block;padding:4px 12px;border-radius:999px;font-size:13px;font-weight:700}
+.badge.bearish{background:#3a1512;color:#ff8a80;border:1px solid rgba(224,122,112,.4)}
+.badge.bullish{background:#0f2e1f;color:#7ee2ae;border:1px solid rgba(127,201,143,.4)}
+.badge.neutral{background:#33270a;color:#f2c14e;border:1px solid rgba(224,166,60,.4)}
+.chip{display:inline-block;padding:2px 8px;border-radius:6px;font-size:12px;font-weight:700}
+.chip.below{background:#3a1512;color:#ff8a80}
+.chip.above{background:#0f2e1f;color:#7ee2ae}
+.chip.inside{background:#232a35;color:#c8d0da}
+ul.levels{margin:0;padding-left:18px}
+ul.levels li{margin:4px 0}
+.check{display:flex;gap:12px;align-items:flex-start;padding:11px 6px;
+  border-bottom:1px solid rgba(212,175,55,.16);cursor:pointer}
+.check:last-child{border-bottom:0}
+.check input{position:absolute;opacity:0;pointer-events:none}
+.check .box{flex:0 0 24px;width:24px;height:24px;border:1.5px solid var(--gold);
+  border-radius:2px;margin-top:2px;position:relative;background:transparent}
+.check input:checked + .box{background:var(--gold)}
+.check input:checked + .box::after{content:"\2713";position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;color:#14100a;
+  font-weight:700;font-size:16px}
+.check .t{font-weight:600;color:var(--cream)}
+.check .s{color:var(--muted);font-size:13px}
+.check.warn{border-left:3px solid var(--amber);padding-left:12px}
+.tag{font-size:11px;font-weight:700;color:var(--gold);border:1px solid var(--gold);
+  border-radius:4px;padding:1px 5px;margin-left:6px;vertical-align:middle}
+.nopress{border:1px solid var(--gold);outline:1px solid var(--gold-faint2);
+  outline-offset:3px;border-radius:6px;padding:14px;text-align:center;
+  color:var(--gold);font-family:Georgia,serif;font-size:19px;line-height:1.35;margin-top:14px}
+.footline{text-align:center;color:var(--gold);letter-spacing:.18em;font-size:11px;margin:28px 0 8px}
+.locked-banner{background:#5c1512;border:1px solid var(--red);border-radius:8px;
+  padding:14px;margin:14px 0;font-weight:700}
+.no-trade .check{opacity:.45;pointer-events:none}
+figure{margin:12px 0}
+figure img{width:100%;border-radius:6px;border:1px solid rgba(212,175,55,.3);display:block}
+figcaption{color:var(--muted);font-size:13px;margin-top:5px}
+select,input[type=text]{width:100%;padding:10px;border-radius:8px;
+  border:1px solid var(--gold-faint);background:#0a0a0c;color:var(--text);
+  font-size:15px;margin:4px 0 10px}
+button{background:var(--gold);color:#14100a;border:0;border-radius:8px;padding:11px 16px;
+  font-size:15px;font-weight:700;width:100%}
+button.ghost{background:transparent;color:var(--muted);border:1px solid rgba(212,175,55,.35);
+  width:auto;padding:6px 12px;font-size:13px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+td,th{padding:6px 4px;border-bottom:1px solid rgba(212,175,55,.16);text-align:left;vertical-align:top}
+th{color:var(--muted);font-weight:600}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-top:8px}
+.cal .dow{color:var(--muted);font-size:11px;text-align:center;letter-spacing:.08em;padding:4px 0}
+.cal button{background:#141216;border:1px solid #2a2630;border-radius:6px;color:#6f6a5e;
+  padding:9px 0 7px;font-size:16px;font-family:Georgia,serif;cursor:default;width:auto}
+.cal button small{display:block;font-size:10px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+.cal button.has{border-color:var(--gold);color:var(--cream);cursor:pointer}
+.cal button.has small{color:var(--gold)}
+.cal button.sel{background:var(--gold);color:#14100a;border-color:var(--gold)}
+.cal button.sel small{color:#14100a}
+.cal button:disabled{opacity:.4}
+.cal-month{font-family:Georgia,serif;font-size:17px;color:var(--gold);margin:14px 0 2px}
+.toggle{display:flex;gap:8px;margin:12px 0}
+.toggle button{flex:1;background:transparent;border:1px solid var(--gold-faint);
+  color:var(--gold);border-radius:8px;padding:9px;font-weight:700}
+.toggle button.on{background:var(--gold);color:#14100a}
+.day-detail h3.set-h{margin-top:18px}
+</style></head>
+<body data-day='2026-11-27' data-server-lock='0'><div class='wrap'>
+<div class='eyebrow'>MGC &bull; MICRO GOLD &bull;</div>
+<h1>TRADING BRIEF</h1>
+<p class='subtitle'>&mdash; Mon&ndash;Fri only, no Sunday nights &mdash;</p>
+<div class='rule'>&#9670;</div>
+<div class='center'><span class='badge bearish'>Bearish — correction stalling</span></div>
+<div class='big'>$3,668.70</div>
+<p class='muted center'>Latest read 6:00 PM CT &middot; Updated from the 10:00 PM CT candle watch</p>
+<div class='locked-banner' id='lock-banner' style='display:none'><span id='lock-banner-text'></span></div>
+<div class='card'><h2>Market read</h2><p>still a correction up inside the 1H/4H downtrend from Nov 18 — and the 14:00 and 16:30 reads were right on every point, verified a third time with no new candles. The correction that started off the $3,425.00 low (MGCG7 $3,454.30) pushed to $3,712.60, failed back to $3,642.70, and is now pausing — neither a fresh push toward $3,720.30 nor a break below $3,642.70. No new candles since 13:00 CT, so nothing changed after the 16:30 verification; the pause may just be the early close, not a real stall. Watch Monday whether it holds above ~$3,642.70 or breaks down toward $3,619.30 / $3,594.70. No trade suggestion — structure only. (He is sitting out trading until Mon Nov 30; accounts flat.)</p></div>
+<div class='card'><h2>Key levels</h2><ul class='levels'><li>$3,642.70 support / watch level — hold above or break below</li><li>$3,720.30 resistance / fresh push target</li><li>$3,712.60 correction high</li><li>$3,619.30 downside target</li><li>$3,594.70 downside target</li><li>$3,425.00 low (MGCG7 $3,454.30) correction start</li></ul></div>
+<div class='card'><h2>Accounts</h2><table><tr><th>Account</th><th>Balance</th><th>Realized P&amp;L</th><th>Status</th></tr><tr><td colspan='4' class='muted'>No account read in the latest journal entry.</td></tr></table>
+<p class='muted'>TEST013 Active, balance $25,665.00, today&#x27;s RP&amp;L $0.00, UP&amp;L $0.00, 0 open positions. TEST012 Locked, balance $25,588.80, today&#x27;s RP&amp;L $0.00, UP&amp;L $0.00, 0 open positions. Totals: RP&amp;L $0.00, UP&amp;L $0.00, charges $0.00, 0 open positions, no open orders. RP&amp;L $0.00 matches the 18:00 run (day rollover after 17:00 CT, balances unchanged). No &quot;Connection limit reached&quot; dialog this run.</p>
+</div>
+<div class='card' id='checklist'><h2>Daily Trading Checklist</h2><p class='muted' style='margin-top:-6px'>&mdash; Follow before entering any trade &mdash; <span id='ck-progress'></span></p>
+<label class='check'><input type='checkbox' data-key='wait'><span class='box'></span><span><span class='t'>Wait until 6:30pm CT — do not trade before 6:30pm, be patient.</span><br><span class='s'>5:00–6:00pm is FORBIDDEN. 6:00–6:30pm is still wait time.</span></span></label>
+<label class='check'><input type='checkbox' data-key='sunday'><span class='box'></span><span><span class='t'>NO Sunday night trading</span><br><span class='s'>I get impatient Sunday nights. Mon–Fri only.</span></span></label>
+<label class='check'><input type='checkbox' data-key='icc'><span class='box'></span><span><span class='t'>ICC setup? Indication → Correction → Continuation</span> <span class="tag">ADAPTED</span><br><span class='s'>Where price is now: CORRECTION STALLING — the counter-move is losing momentum but has not failed back toward the indication yet. Pure market structure, no indicators. 1H / 4H bias, 15m / 5m entries, min 1:3 RR. Stalling is not failing — wait for the actual failure back, not the first sign of it.</span></span></label>
+<label class='check'><input type='checkbox' data-key='trend'><span class='box'></span><span><span class='t'>Trend check: bearish bias — correction stalling at the top</span> <span class="tag">ADAPTED</span><br><span class='s'>First signs of the bounce rolling over on 1H / 15m, but it has not failed back toward the indication on 4H yet. A stall is not a breakdown — shorts still wait for price to start breaking down and stop making more highs.</span></span></label>
+<label class='check'><input type='checkbox' data-key='risk'><span class='box'></span><span><span class='t'>Risk: 1 micro gold only, $50 risk max per trade</span><br><span class='s'>$1 move = $10. So $50 risk is about a $5 move against you.</span></span></label>
+<label class='check'><input type='checkbox' data-key='stop'><span class='box'></span><span><span class='t'>Daily stop: max loss $100 / day</span><br><span class='s'>Stop at $100, no revenge trading. $100 is about a $10 move on 1 micro.</span></span></label>
+<label class='check'><input type='checkbox' data-key='news'><span class='box'></span><span><span class='t'>News clear? No Red Folder ±30 min</span><br><span class='s'>No trading around high-impact USD news.</span></span></label>
+<label class='check warn'><input type='checkbox' data-key='regime'><span class='box'></span><span><span class='t'>Regime rule: stalling ≠ failed — don’t front-run the turn</span> <span class="tag">ADAPTED</span><br><span class='s'>Nov 18’s lesson was entering during the correction, before it failed back. A stalling correction tempts exactly that. Wait for the failure back toward the indication, confirmed on the higher timeframe. Watch: $3,642.70 support / watch level — hold above or break below</span></span></label>
+<label class='check'><input type='checkbox' data-key='plan'><span class='box'></span><span><span class='t'>Hold the plan</span><br><span class='s'>No overleveraging, don’t trade against the trend, hold the plan — candles are not predictions.</span></span></label>
+<div class='nopress'>You do NOT have to trade today<br>no trade is a valid outcome.</div></div>
+<div class='card'><h2>Candle calendar</h2><p class='muted'>Tap a day to see its chart sets. Annotated is the marked-up version; Raw is the plain capture.</p>
+<div class='cal-month'>November 2026</div>
+<div class='cal'>
+<div class='dow'>SUN</div>
+<div class='dow'>MON</div>
+<div class='dow'>TUE</div>
+<div class='dow'>WED</div>
+<div class='dow'>THU</div>
+<div class='dow'>FRI</div>
+<div class='dow'>SAT</div>
+<button disabled>1</button>
+<button disabled>2</button>
+<button disabled>3</button>
+<button disabled>4</button>
+<button disabled>5</button>
+<button disabled>6</button>
+<button disabled>7</button>
+<button disabled>8</button>
+<button disabled>9</button>
+<button disabled>10</button>
+<button disabled>11</button>
+<button disabled>12</button>
+<button disabled>13</button>
+<button disabled>14</button>
+<button disabled>15</button>
+<button disabled>16</button>
+<button disabled>17</button>
+<button disabled>18</button>
+<button class='has' data-day='2026-11-19' onclick="showDay('2026-11-19')">19<small>4 sets</small></button>
+<button class='has' data-day='2026-11-20' onclick="showDay('2026-11-20')">20<small>6 sets</small></button>
+<button disabled>21</button>
+<button disabled>22</button>
+<button class='has' data-day='2026-11-23' onclick="showDay('2026-11-23')">23<small>7 sets</small></button>
+<button class='has' data-day='2026-11-24' onclick="showDay('2026-11-24')">24<small>7 sets</small></button>
+<button class='has' data-day='2026-11-25' onclick="showDay('2026-11-25')">25<small>6 sets</small></button>
+<button class='has' data-day='2026-11-26' onclick="showDay('2026-11-26')">26<small>6 sets</small></button>
+<button class='has sel' data-day='2026-11-27' onclick="showDay('2026-11-27')">27<small>7 sets</small></button>
+<button disabled>28</button>
+<button disabled>29</button>
+<button disabled>30</button>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+</div>
+<section class='day-detail' id='day-2026-11-19' style='display:none'>
+<h3>Thu Nov 19, 2026 — 4 sets</h3>
+<table><tr><th>Time</th><th>4H</th><th>2H</th><th>1H</th><th>15m</th></tr><tr><td><b>1:00 PM</b></td><td><b>4H</b> 3,681.80<br><span class='chip below'>BELOW prior low</span></td><td><b>2H</b> 3,681.80<br><span class='chip inside'>INSIDE prior range</span></td><td><b>1H</b> 3,681.80<br><span class='chip inside'>INSIDE prior range</span></td><td><b>15m</b><br><span class='muted'>—</span></td></tr>
+<tr><td><b>6:00 PM</b></td><td><b>4H</b> 3,628.00<br><span class='chip below'>BELOW prior low</span></td><td><b>2H</b> 3,628.00<br><span class='chip below'>BELOW prior low</span></td><td><b>1H</b> 3,608.90<br><span class='chip below'>BELOW prior low</span></td><td><b>15m</b><br><span class='muted'>—</span></td></tr>
+<tr><td><b>10:00 PM</b></td><td><b>4H</b> 3,548.70<br><span class='chip below'>BELOW prior low</span></td><td><b>2H</b> 3,548.70<br><span class='chip below'>BELOW prior low</span></td><td><b>1H</b> 3,548.70<br><span class='chip below'>BELOW prior low</span></td><td><b>15m</b> 3,554.80<br><span class='chip above'>ABOVE prior high</span></td></tr></table>
+<div class='toggle' data-day='2026-11-19'><button class='on' data-mode='ann' onclick="setMode('2026-11-19','ann')">Annotated</button><button data-mode='raw' onclick="setMode('2026-11-19','raw')">Raw</button></div>
+<h3 class='set-h'>4:52 PM set</h3>
+<figure><img src='shots/2026-11-19-1652-MGC-4H.jpg' data-ann='shots/2026-11-19-1652-MGC-4H.jpg' data-raw='shots/2026-11-19-1652-MGC-4H-raw.jpg' data-has-ann='1' loading='lazy' alt='4H chart 1652'><figcaption>4H · 4:52 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-19-1652-MGC-2H.jpg' data-ann='shots/2026-11-19-1652-MGC-2H.jpg' data-raw='shots/2026-11-19-1652-MGC-2H-raw.jpg' data-has-ann='1' loading='lazy' alt='2H chart 1652'><figcaption>2H · 4:52 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<h3 class='set-h'>4:53 PM set</h3>
+<figure><img src='shots/2026-11-19-1653-MGC-1H.jpg' data-ann='shots/2026-11-19-1653-MGC-1H.jpg' data-raw='shots/2026-11-19-1653-MGC-1H-raw.jpg' data-has-ann='1' loading='lazy' alt='1H chart 1653'><figcaption>1H · 4:53 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<h3 class='set-h'>4:54 PM set</h3>
+<figure><img src='shots/2026-11-19-1654-MGC-15m.jpg' data-ann='shots/2026-11-19-1654-MGC-15m.jpg' data-raw='shots/2026-11-19-1654-MGC-15m.jpg' data-has-ann='0' loading='lazy' alt='15m chart 1654'><figcaption>15m · 4:54 PM set · <span class='vlabel'>Raw — no annotated version</span></figcaption></figure>
+<h3 class='set-h'>10:00 PM set</h3>
+<figure><img src='shots/2026-11-19-2200-MGC-4H.jpg' data-ann='shots/2026-11-19-2200-MGC-4H.jpg' data-raw='shots/2026-11-19-2200-MGC-4H.jpg' data-has-ann='0' loading='lazy' alt='4H chart 2200'><figcaption>4H · 10:00 PM set · <span class='vlabel'>Raw — no annotated version</span></figcaption></figure>
+<figure><img src='shots/2026-11-19-2200-MGC-2H.jpg' data-ann='shots/2026-11-19-2200-MGC-2H.jpg' data-raw='shots/2026-11-19-2200-MGC-2H.jpg' data-has-ann='0' loading='lazy' alt='2H chart 2200'><figcaption>2H · 10:00 PM set · <span class='vlabel'>Raw — no annotated version</span></figcaption></figure>
+<figure><img src='shots/2026-11-19-2200-MGC-1H.jpg' data-ann='shots/2026-11-19-2200-MGC-1H.jpg' data-raw='shots/2026-11-19-2200-MGC-1H.jpg' data-has-ann='0' loading='lazy' alt='1H chart 2200'><figcaption>1H · 10:00 PM set · <span class='vlabel'>Raw — no annotated version</span></figcaption></figure>
+<figure><img src='shots/2026-11-19-2200-MGC-15m.jpg' data-ann='shots/2026-11-19-2200-MGC-15m.jpg' data-raw='shots/2026-11-19-2200-MGC-15m-raw.jpg' data-has-ann='1' loading='lazy' alt='15m chart 2200'><figcaption>15m · 10:00 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+</section>
+<section class='day-detail' id='day-2026-11-20' style='display:none'>
+<h3>Fri Nov 20, 2026 — 6 sets</h3>
+<table><tr><th>Time</th><th>4H</th><th>2H</th><th>1H</th><th>15m</th></tr><tr><td><b>2:00 AM</b></td><td><b>4H</b> 3,561.30<br><span class='chip inside'>INSIDE prior range</span></td><td><b>2H</b> 3,561.30<br><span class='chip above'>ABOVE prior high</span></td><td><b>1H</b> 3,569.90<br><span class='chip above'>ABOVE prior high</span></td><td><b>15m</b> 3,569.90<br><span class='chip above'>ABOVE prior high</span></td></tr>
+<tr><td><b>6:00 AM</b></td><td><b>4H</b> 3,588.40<br><span class='chip above'>ABOVE prior high</span></td><td><b>2H</b> 3,588.40<br><span class='chip inside'>INSIDE prior range</span></td><td><b>1H</b> 3,575.60<br><span class='chip inside'>INSIDE prior range</span></td><td><b>15m</b> 3,575.60<br><span class='chip below'>BELOW prior low</span></td></tr>
+<tr><td><b>10:00 AM</b></td><td><b>4H</b> 3,579.20<br><span class='chip inside'>INSIDE prior range</span></td><td><b>2H</b> 3,579.20<br><span class='chip inside'>INSIDE prior range</span></td><td><b>1H</b> 3,552.10<br><span class='chip below'>BELOW prior low</span></td><td><b>15m</b> 3,552.10<br><span class='chip inside'>INSIDE prior range</span></td></tr>
+<tr><td><b>2:00 PM</b></td><td><b>4H</b> 3,535.40<br><span class='chip below'>BELOW prior low</span></td><td><b>2H</b> 3,535.40<br><span class='chip inside'>INSIDE prior range</span></td><td><b>1H</b> 3,525.00<br><span class='chip inside'>INSIDE prior range</span></td><td><b>15m</b> 3,525.00<br><span class='chip inside'>INSIDE prior range</span></td></tr>
+<tr><td><b>6:00 PM</b></td><td><b>4H</b> 3,538.50<br><span class='chip inside'>INSIDE prior range</span></td><td><b>2H</b> 3,538.50<br><span class='chip above'>ABOVE prior high</span></td><td><b>1H</b><br><span class='muted'>—</span></td><td><b>15m</b><br><span class='muted'>—</span></td></tr>
+<tr><td><b>10:00 PM</b></td><td><b>4H</b> 3,538.50<br><span class='chip inside'>INSIDE prior range</span></td><td><b>2H</b> 3,538.50<br><span class='chip above'>ABOVE prior high</span></td><td><b>1H</b><br><span class='muted'>—</span></td><td><b>15m</b><br><span class='muted'>—</span></td></tr></table>
+<div class='toggle' data-day='2026-11-20'><button class='on' data-mode='ann' onclick="setMode('2026-11-20','ann')">Annotated</button><button data-mode='raw' onclick="setMode('2026-11-20','raw')">Raw</button></div>
+<h3 class='set-h'>2:00 AM set</h3>
+<figure><img src='shots/2026-11-20-0200-MGC-4H.jpg' data-ann='shots/2026-11-20-0200-MGC-4H.jpg' data-raw='shots/2026-11-20-0200-MGC-4H-raw.jpg' data-has-ann='1' loading='lazy' alt='4H chart 0200'><figcaption>4H · 2:00 AM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-20-0200-MGC-2H.jpg' data-ann='shots/2026-11-20-0200-MGC-2H.jpg' data-raw='shots/2026-11-20-0200-MGC-2H-raw.jpg' data-has-ann='1' loading='lazy' alt='2H chart 0200'><figcaption>2H · 2:00 AM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-20-0200-MGC-1H.jpg' data-ann='shots/2026-11-20-0200-MGC-1H.jpg' data-raw='shots/2026-11-20-0200-MGC-1H-raw.jpg' data-has-ann='1' loading='lazy' alt='1H chart 0200'><figcaption>1H · 2:00 AM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-20-0200-MGC-15m.jpg' data-ann='shots/2026-11-20-0200-MGC-15m.jpg' data-raw='shots/2026-11-20-0200-MGC-15m-raw.jpg' data-has-ann='1' loading='lazy' alt='15m chart 0200'><figcaption>15m · 2:00 AM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<h3 class='set-h'>6:00 AM set</h3>
+<figure><img src='shots/2026-11-20-0600-MGC-4H.jpg' data-ann='shots/2026-11-20-0600-MGC-4H.jpg' data-raw='shots/2026-11-20-0600-MGC-4H-raw.jpg' data-has-ann='1' loading='lazy' alt='4H chart 0600'><figcaption>4H · 6:00 AM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-20-0600-MGC-2H.jpg' data-ann='shots/2026-11-20-0600-MGC-2H.jpg' data-raw='shots/2026-11-20-0600-MGC-2H-raw.jpg' data-has-ann='1' loading='lazy' alt='2H chart 0600'><figcaption>2H · 6:00 AM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-20-0600-MGC-1H.jpg' data-ann='shots/2026-11-20-0600-MGC-1H.jpg' data-raw='shots/2026-11-20-0600-MGC-1H-raw.jpg' data-has-ann='1' loading='lazy' alt='1H chart 0600'><figcaption>1H · 6:00 AM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-20-0600-MGC-15m.jpg' data-ann='shots/2026-11-20-0600-MGC-15m.jpg' data-raw='shots/2026-11-20-0600-MGC-15m-raw.jpg' data-has-ann='1' loading='lazy' alt='15m chart 0600'><figcaption>15m · 6:00 AM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<h3 class='set-h'>10:00 AM set</h3>
+<figure><img src='shots/2026-11-20-1000-MGC-4H.jpg' data-ann='shots/2026-11-20-1000-MGC-4H.jpg' data-raw='shots/2026-11-20-1000-MGC-4H-raw.jpg' data-has-ann='1' loading='lazy' alt='4H chart 1000'><figcaption>4H · 10:00 AM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-20-1000-MGC-2H.jpg' data-ann='shots/2026-11-20-1000-MGC-2H.jpg' data-raw='shots/2026-11-20-1000-MGC-2H-raw.jpg' data-has-ann='1' loading='lazy' alt='2H chart 1000'><figcaption>2H · 10:00 AM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-20-1000-MGC-1H.jpg' data-ann='shots/2026-11-20-1000-MGC-1H.jpg' data-raw='shots/2026-11-20-1000-MGC-1H-raw.jpg' data-has-ann='1' loading='lazy' alt='1H chart 1000'><figcaption>1H · 10:00 AM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-20-1000-MGC-15m.jpg' data-ann='shots/2026-11-20-1000-MGC-15m.jpg' data-raw='shots/2026-11-20-1000-MGC-15m-raw.jpg' data-has-ann='1' loading='lazy' alt='15m chart 1000'><figcaption>15m · 10:00 AM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<h3 class='set-h'>2:00 PM set</h3>
+<figure><img src='shots/2026-11-20-1400-MGC-4H.jpg' data-ann='shots/2026-11-20-1400-MGC-4H.jpg' data-raw='shots/2026-11-20-1400-MGC-4H-raw.jpg' data-has-ann='1' loading='lazy' alt='4H chart 1400'><figcaption>4H · 2:00 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-20-1400-MGC-2H.jpg' data-ann='shots/2026-11-20-1400-MGC-2H.jpg' data-raw='shots/2026-11-20-1400-MGC-2H.jpg' data-has-ann='0' loading='lazy' alt='2H chart 1400'><figcaption>2H · 2:00 PM set · <span class='vlabel'>Raw — no annotated version</span></figcaption></figure>
+<figure><img src='shots/2026-11-20-1400-MGC-1H.jpg' data-ann='shots/2026-11-20-1400-MGC-1H.jpg' data-raw='shots/2026-11-20-1400-MGC-1H.jpg' data-has-ann='0' loading='lazy' alt='1H chart 1400'><figcaption>1H · 2:00 PM set · <span class='vlabel'>Raw — no annotated version</span></figcaption></figure>
+<figure><img src='shots/2026-11-20-1400-MGC-15m.jpg' data-ann='shots/2026-11-20-1400-MGC-15m.jpg' data-raw='shots/2026-11-20-1400-MGC-15m-raw.jpg' data-has-ann='1' loading='lazy' alt='15m chart 1400'><figcaption>15m · 2:00 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<h3 class='set-h'>6:00 PM set</h3>
+<figure><img src='shots/2026-11-20-1800-MGC-4H.jpg' data-ann='shots/2026-11-20-1800-MGC-4H.jpg' data-raw='shots/2026-11-20-1800-MGC-4H.jpg' data-has-ann='0' loading='lazy' alt='4H chart 1800'><figcaption>4H · 6:00 PM set · <span class='vlabel'>Raw — no annotated version</span></figcaption></figure>
+<figure><img src='shots/2026-11-20-1800-MGC-2H.jpg' data-ann='shots/2026-11-20-1800-MGC-2H.jpg' data-raw='shots/2026-11-20-1800-MGC-2H.jpg' data-has-ann='0' loading='lazy' alt='2H chart 1800'><figcaption>2H · 6:00 PM set · <span class='vlabel'>Raw — no annotated version</span></figcaption></figure>
+<figure><img src='shots/2026-11-20-1800-MGC-1H.jpg' data-ann='shots/2026-11-20-1800-MGC-1H.jpg' data-raw='shots/2026-11-20-1800-MGC-1H.jpg' data-has-ann='0' loading='lazy' alt='1H chart 1800'><figcaption>1H · 6:00 PM set · <span class='vlabel'>Raw — no annotated version</span></figcaption></figure>
+<figure><img src='shots/2026-11-20-1800-MGC-15m.jpg' data-ann='shots/2026-11-20-1800-MGC-15m.jpg' data-raw='shots/2026-11-20-1800-MGC-15m.jpg' data-has-ann='0' loading='lazy' alt='15m chart 1800'><figcaption>15m · 6:00 PM set · <span class='vlabel'>Raw — no annotated version</span></figcaption></figure>
+<h3 class='set-h'>10:00 PM set</h3>
+<figure><img src='shots/2026-11-20-2200-MGC-4H.jpg' data-ann='shots/2026-11-20-2200-MGC-4H.jpg' data-raw='shots/2026-11-20-2200-MGC-4H.jpg' data-has-ann='0' loading='lazy' alt='4H chart 2200'><figcaption>4H · 10:00 PM set · <span class='vlabel'>Raw — no annotated version</span></figcaption></figure>
+<figure><img src='shots/2026-11-20-2200-MGC-2H.jpg' data-ann='shots/2026-11-20-2200-MGC-2H.jpg' data-raw='shots/2026-11-20-2200-MGC-2H.jpg' data-has-ann='0' loading='lazy' alt='2H chart 2200'><figcaption>2H · 10:00 PM set · <span class='vlabel'>Raw — no annotated version</span></figcaption></figure>
+<figure><img src='shots/2026-11-20-2200-MGC-1H.jpg' data-ann='shots/2026-11-20-2200-MGC-1H.jpg' data-raw='shots/2026-11-20-2200-MGC-1H.jpg' data-has-ann='0' loading='lazy' alt='1H chart 2200'><figcaption>1H · 10:00 PM set · <span class='vlabel'>Raw — no annotated version</span></figcaption></figure>
+<figure><img src='shots/2026-11-20-2200-MGC-15m.jpg' data-ann='shots/2026-11-20-2200-MGC-15m.jpg' data-raw='shots/2026-11-20-2200-MGC-15m.jpg' data-has-ann='0' loading='lazy' alt='15m chart 2200'><figcaption>15m · 10:00 PM set · <span class='vlabel'>Raw — no annotated version</span></figcaption></figure>
+</section>
+<section class='day-detail' id='day-2026-11-23' style='display:none'>
+<h3>Mon Nov 23, 2026 — 7 sets</h3>
+<table><tr><th>Time</th><th>4H</th><th>2H</th><th>1H</th><th>15m</th></tr><tr><td><b>2:00 AM</b></td><td><b>4H</b> 3,620.40<br><span class='chip inside'>INSIDE prior range</span></td><td><b>2H</b> 3,620.40<br><span class='chip above'>ABOVE prior high</span></td><td><b>1H</b> 3,617.30<br><span class='chip inside'>INSIDE prior range</span></td><td><b>15m</b> 3,617.30<br><span class='chip below'>BELOW prior low</span></td></tr>
+<tr><td><b>6:00 AM</b></td><td><b>4H</b> 3,624.60<br><span class='chip inside'>INSIDE prior range</span></td><td><b>2H</b> 3,624.60<br><span class='chip inside'>INSIDE prior range</span></td><td><b>1H</b> 3,619.30<br><span class='chip inside'>INSIDE prior range</span></td><td><b>15m</b> 3,619.30<br><span class='chip inside'>INSIDE prior range</span></td></tr>
+<tr><td><b>10:00 AM</b></td><td><b>4H</b> 3,668.90<br><span class='chip above'>ABOVE prior high</span></td><td><b>2H</b> 3,668.90<br><span class='chip above'>ABOVE prior high</span></td><td><b>1H</b> 3,669.90<br><span class='chip inside'>INSIDE prior range</span></td><td><b>15m</b> 3,669.90<br><span class='chip inside'>INSIDE prior range</span></td></tr>
+<tr><td><b>2:00 PM</b></td><td><b>4H</b> 3,649.10<br><span class='chip inside'>INSIDE prior range</span></td><td><b>2H</b> 3,649.10<br><span class='chip below'>BELOW prior low</span></td><td><b>1H</b> 3,642.70<br><span class='chip below'>BELOW prior low</span></td><td><b>15m</b> 3,642.70<br><span class='chip inside'>INSIDE prior range</span></td></tr>
+<tr><td><b>6:00 PM</b></td><td><b>4H</b> 3,634.50<br><span class='chip below'>BELOW prior low</span></td><td><b>2H</b> 3,634.50<br><span class='chip inside'>INSIDE prior range</span></td><td><b>1H</b> 3,630.90<br><span class='chip inside'>INSIDE prior range</span></td><td><b>15m</b> 3,630.90<br><span class='chip inside'>INSIDE prior range</span></td></tr>
+<tr><td><b>10:00 PM</b></td><td><b>4H</b> 3,639.40<br><span class='chip inside'>INSIDE prior range</span></td><td><b>2H</b> 3,639.40<br><span class='chip inside'>INSIDE prior range</span></td><td><b>1H</b> 3,632.00<br><span class='chip below'>BELOW prior low</span></td><td><b>15m</b> 3,632.00<br><span class='chip inside'>INSIDE prior range</span></td></tr></table>
+<div class='toggle' data-day='2026-11-23'><button class='on' data-mode='ann' onclick="setMode('2026-11-23','ann')">Annotated</button><button data-mode='raw' onclick="setMode('2026-11-23','raw')">Raw</button></div>
+<h3 class='set-h'>2:00 AM set</h3>
+<figure><img src='shots/2026-11-23-0200-MGC-4H.jpg' data-ann='shots/2026-11-23-0200-MGC-4H.jpg' data-raw='shots/2026-11-23-0200-MGC-4H-raw.jpg' data-has-ann='1' loading='lazy' alt='4H chart 0200'><figcaption>4H · 2:00 AM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-23-0200-MGC-2H.jpg' data-ann='shots/2026-11-23-0200-MGC-2H.jpg' data-raw='shots/2026-11-23-0200-MGC-2H-raw.jpg' data-has-ann='1' loading='lazy' alt='2H chart 0200'><figcaption>2H · 2:00 AM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-23-0200-MGC-1H.jpg' data-ann='shots/2026-11-23-0200-MGC-1H.jpg' data-raw='shots/2026-11-23-0200-MGC-1H-raw.jpg' data-has-ann='1' loading='lazy' alt='1H chart 0200'><figcaption>1H · 2:00 AM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-23-0200-MGC-15m.jpg' data-ann='shots/2026-11-23-0200-MGC-15m.jpg' data-raw='shots/2026-11-23-0200-MGC-15m-raw.jpg' data-has-ann='1' loading='lazy' alt='15m chart 0200'><figcaption>15m · 2:00 AM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<h3 class='set-h'>6:00 AM set</h3>
+<figure><img src='shots/2026-11-23-0600-MGC-4H.jpg' data-ann='shots/2026-11-23-0600-MGC-4H.jpg' data-raw='shots/2026-11-23-0600-MGC-4H-raw.jpg' data-has-ann='1' loading='lazy' alt='4H chart 0600'><figcaption>4H · 6:00 AM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-23-0600-MGC-2H.jpg' data-ann='shots/2026-11-23-0600-MGC-2H.jpg' data-raw='shots/2026-11-23-0600-MGC-2H-raw.jpg' data-has-ann='1' loading='lazy' alt='2H chart 0600'><figcaption>2H · 6:00 AM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-23-0600-MGC-1H.jpg' data-ann='shots/2026-11-23-0600-MGC-1H.jpg' data-raw='shots/2026-11-23-0600-MGC-1H-raw.jpg' data-has-ann='1' loading='lazy' alt='1H chart 0600'><figcaption>1H · 6:00 AM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-23-0600-MGC-15m.jpg' data-ann='shots/2026-11-23-0600-MGC-15m.jpg' data-raw='shots/2026-11-23-0600-MGC-15m-raw.jpg' data-has-ann='1' loading='lazy' alt='15m chart 0600'><figcaption>15m · 6:00 AM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<h3 class='set-h'>10:00 AM set</h3>
+<figure><img src='shots/2026-11-23-1000-MGC-4H.jpg' data-ann='shots/2026-11-23-1000-MGC-4H.jpg' data-raw='shots/2026-11-23-1000-MGC-4H-raw.jpg' data-has-ann='1' loading='lazy' alt='4H chart 1000'><figcaption>4H · 10:00 AM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-23-1000-MGC-2H.jpg' data-ann='shots/2026-11-23-1000-MGC-2H.jpg' data-raw='shots/2026-11-23-1000-MGC-2H-raw.jpg' data-has-ann='1' loading='lazy' alt='2H chart 1000'><figcaption>2H · 10:00 AM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-23-1000-MGC-1H.jpg' data-ann='shots/2026-11-23-1000-MGC-1H.jpg' data-raw='shots/2026-11-23-1000-MGC-1H-raw.jpg' data-has-ann='1' loading='lazy' alt='1H chart 1000'><figcaption>1H · 10:00 AM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-23-1000-MGC-15m.jpg' data-ann='shots/2026-11-23-1000-MGC-15m.jpg' data-raw='shots/2026-11-23-1000-MGC-15m-raw.jpg' data-has-ann='1' loading='lazy' alt='15m chart 1000'><figcaption>15m · 10:00 AM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<h3 class='set-h'>2:00 PM set</h3>
+<figure><img src='shots/2026-11-23-1400-MGC-4H.jpg' data-ann='shots/2026-11-23-1400-MGC-4H.jpg' data-raw='shots/2026-11-23-1400-MGC-4H-raw.jpg' data-has-ann='1' loading='lazy' alt='4H chart 1400'><figcaption>4H · 2:00 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-23-1400-MGC-2H.jpg' data-ann='shots/2026-11-23-1400-MGC-2H.jpg' data-raw='shots/2026-11-23-1400-MGC-2H-raw.jpg' data-has-ann='1' loading='lazy' alt='2H chart 1400'><figcaption>2H · 2:00 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-23-1400-MGC-1H.jpg' data-ann='shots/2026-11-23-1400-MGC-1H.jpg' data-raw='shots/2026-11-23-1400-MGC-1H-raw.jpg' data-has-ann='1' loading='lazy' alt='1H chart 1400'><figcaption>1H · 2:00 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-23-1400-MGC-15m.jpg' data-ann='shots/2026-11-23-1400-MGC-15m.jpg' data-raw='shots/2026-11-23-1400-MGC-15m-raw.jpg' data-has-ann='1' loading='lazy' alt='15m chart 1400'><figcaption>15m · 2:00 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<h3 class='set-h'>4:30 PM set</h3>
+<figure><img src='shots/2026-11-23-1630-MGC-4H.jpg' data-ann='shots/2026-11-23-1630-MGC-4H.jpg' data-raw='shots/2026-11-23-1630-MGC-4H-raw.jpg' data-has-ann='1' loading='lazy' alt='4H chart 1630'><figcaption>4H · 4:30 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-23-1630-MGC-2H.jpg' data-ann='shots/2026-11-23-1630-MGC-2H.jpg' data-raw='shots/2026-11-23-1630-MGC-2H-raw.jpg' data-has-ann='1' loading='lazy' alt='2H chart 1630'><figcaption>2H · 4:30 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-23-1630-MGC-1H.jpg' data-ann='shots/2026-11-23-1630-MGC-1H.jpg' data-raw='shots/2026-11-23-1630-MGC-1H-raw.jpg' data-has-ann='1' loading='lazy' alt='1H chart 1630'><figcaption>1H · 4:30 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-23-1630-MGC-15m.jpg' data-ann='shots/2026-11-23-1630-MGC-15m.jpg' data-raw='shots/2026-11-23-1630-MGC-15m.jpg' data-has-ann='0' loading='lazy' alt='15m chart 1630'><figcaption>15m · 4:30 PM set · <span class='vlabel'>Raw — no annotated version</span></figcaption></figure>
+<h3 class='set-h'>6:00 PM set</h3>
+<figure><img src='shots/2026-11-23-1800-MGC-4H.jpg' data-ann='shots/2026-11-23-1800-MGC-4H.jpg' data-raw='shots/2026-11-23-1800-MGC-4H-raw.jpg' data-has-ann='1' loading='lazy' alt='4H chart 1800'><figcaption>4H · 6:00 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-23-1800-MGC-2H.jpg' data-ann='shots/2026-11-23-1800-MGC-2H.jpg' data-raw='shots/2026-11-23-1800-MGC-2H-raw.jpg' data-has-ann='1' loading='lazy' alt='2H chart 1800'><figcaption>2H · 6:00 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-23-1800-MGC-1H.jpg' data-ann='shots/2026-11-23-1800-MGC-1H.jpg' data-raw='shots/2026-11-23-1800-MGC-1H-raw.jpg' data-has-ann='1' loading='lazy' alt='1H chart 1800'><figcaption>1H · 6:00 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-23-1800-MGC-15m.jpg' data-ann='shots/2026-11-23-1800-MGC-15m.jpg' data-raw='shots/2026-11-23-1800-MGC-15m-raw.jpg' data-has-ann='1' loading='lazy' alt='15m chart 1800'><figcaption>15m · 6:00 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<h3 class='set-h'>10:00 PM set</h3>
+<figure><img src='shots/2026-11-23-2200-MGC-4H.jpg' data-ann='shots/2026-11-23-2200-MGC-4H.jpg' data-raw='shots/2026-11-23-2200-MGC-4H-raw.jpg' data-has-ann='1' loading='lazy' alt='4H chart 2200'><figcaption>4H · 10:00 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-23-2200-MGC-2H.jpg' data-ann='shots/2026-11-23-2200-MGC-2H.jpg' data-raw='shots/2026-11-23-2200-MGC-2H-raw.jpg' data-has-ann='1' loading='lazy' alt='2H chart 2200'><figcaption>2H · 10:00 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-23-2200-MGC-1H.jpg' data-ann='shots/2026-11-23-2200-MGC-1H.jpg' data-raw='shots/2026-11-23-2200-MGC-1H-raw.jpg' data-has-ann='1' loading='lazy' alt='1H chart 2200'><figcaption>1H · 10:00 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-23-2200-MGC-15m.jpg' data-ann='shots/2026-11-23-2200-MGC-15m.jpg' data-raw='shots/2026-11-23-2200-MGC-15m-raw.jpg' data-has-ann='1' loading='lazy' alt='15m chart 2200'><figcaption>15m · 10:00 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+</section>
+<section class='day-detail' id='day-2026-11-24' style='display:none'>
+<h3>Tue Nov 24, 2026 — 7 sets</h3>
+<table><tr><th>Time</th><th>4H</th><th>2H</th><th>1H</th><th>15m</th></tr><tr><td><b>2:00 AM</b></td><td><b>4H</b> 3,622.60<br><span class='chip inside'>INSIDE prior range</span></td><td><b>2H</b> 3,622.60<br><span class='chip below'>BELOW prior low</span></td><td><b>1H</b> 3,620.00<br><span class='chip inside'>INSIDE prior range</span></td><td><b>15m</b> 3,620.00<br><span class='chip inside'>INSIDE prior range</span></td></tr>
+<tr><td><b>6:00 AM</b></td><td><b>4H</b> 3,629.00<br><span class='chip inside'>INSIDE prior range</span></td><td><b>2H</b> 3,629.00<br><span class='chip above'>ABOVE prior high</span></td><td><b>1H</b> 3,635.00<br><span class='chip above'>ABOVE prior high</span></td><td><b>15m</b> 3,635.00<br><span class='chip inside'>INSIDE prior range</span></td></tr>
+<tr><td><b>10:00 AM</b></td><td><b>4H</b> 3,621.50<br><span class='chip inside'>INSIDE prior range</span></td><td><b>2H</b> 3,621.50<br><span class='chip inside'>INSIDE prior range</span></td><td><b>1H</b> 3,568.20<br><span class='chip below'>BELOW prior low</span></td><td><b>15m</b> 3,568.20<br><span class='chip below'>BELOW prior low</span></td></tr>
+<tr><td><b>2:00 PM</b></td><td><b>4H</b> 3,554.60<br><span class='chip below'>BELOW prior low</span></td><td><b>2H</b> 3,554.60<br><span class='chip below'>BELOW prior low</span></td><td><b>1H</b> 3,555.60<br><span class='chip inside'>INSIDE prior range</span></td><td><b>15m</b> 3,555.60<br><span class='chip inside'>INSIDE prior range</span></td></tr>
+<tr><td><b>6:00 PM</b></td><td><b>4H</b> 3,554.90<br><span class='chip inside'>INSIDE prior range</span></td><td><b>2H</b> 3,554.90<br><span class='chip inside'>INSIDE prior range</span></td><td><b>1H</b> 3,548.80<br><span class='chip inside'>INSIDE prior range</span></td><td><b>15m</b> 3,548.80<br><span class='chip below'>BELOW prior low</span></td></tr>
+<tr><td><b>10:00 PM</b></td><td><b>4H</b> 3,549.60<br><span class='chip inside'>INSIDE prior range</span></td><td><b>2H</b> 3,549.60<br><span class='chip inside'>INSIDE prior range</span></td><td><b>1H</b> 3,547.90<br><span class='chip inside'>INSIDE prior range</span></td><td><b>15m</b> 3,547.90<br><span class='chip below'>BELOW prior low</span></td></tr></table>
+<div class='toggle' data-day='2026-11-24'><button class='on' data-mode='ann' onclick="setMode('2026-11-24','ann')">Annotated</button><button data-mode='raw' onclick="setMode('2026-11-24','raw')">Raw</button></div>
+<h3 class='set-h'>2:00 AM set</h3>
+<figure><img src='shots/2026-11-24-0200-MGC-4H.jpg' data-ann='shots/2026-11-24-0200-MGC-4H.jpg' data-raw='shots/2026-11-24-0200-MGC-4H-raw.jpg' data-has-ann='1' loading='lazy' alt='4H chart 0200'><figcaption>4H · 2:00 AM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-24-0200-MGC-2H.jpg' data-ann='shots/2026-11-24-0200-MGC-2H.jpg' data-raw='shots/2026-11-24-0200-MGC-2H-raw.jpg' data-has-ann='1' loading='lazy' alt='2H chart 0200'><figcaption>2H · 2:00 AM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-24-0200-MGC-1H.jpg' data-ann='shots/2026-11-24-0200-MGC-1H.jpg' data-raw='shots/2026-11-24-0200-MGC-1H-raw.jpg' data-has-ann='1' loading='lazy' alt='1H chart 0200'><figcaption>1H · 2:00 AM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-24-0200-MGC-15m.jpg' data-ann='shots/2026-11-24-0200-MGC-15m.jpg' data-raw='shots/2026-11-24-0200-MGC-15m-raw.jpg' data-has-ann='1' loading='lazy' alt='15m chart 0200'><figcaption>15m · 2:00 AM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<h3 class='set-h'>6:00 AM set</h3>
+<figure><img src='shots/2026-11-24-0600-MGC-4H.jpg' data-ann='shots/2026-11-24-0600-MGC-4H.jpg' data-raw='shots/2026-11-24-0600-MGC-4H-raw.jpg' data-has-ann='1' loading='lazy' alt='4H chart 0600'><figcaption>4H · 6:00 AM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-24-0600-MGC-2H.jpg' data-ann='shots/2026-11-24-0600-MGC-2H.jpg' data-raw='shots/2026-11-24-0600-MGC-2H-raw.jpg' data-has-ann='1' loading='lazy' alt='2H chart 0600'><figcaption>2H · 6:00 AM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-24-0600-MGC-1H.jpg' data-ann='shots/2026-11-24-0600-MGC-1H.jpg' data-raw='shots/2026-11-24-0600-MGC-1H-raw.jpg' data-has-ann='1' loading='lazy' alt='1H chart 0600'><figcaption>1H · 6:00 AM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-24-0600-MGC-15m.jpg' data-ann='shots/2026-11-24-0600-MGC-15m.jpg' data-raw='shots/2026-11-24-0600-MGC-15m-raw.jpg' data-has-ann='1' loading='lazy' alt='15m chart 0600'><figcaption>15m · 6:00 AM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<h3 class='set-h'>10:00 AM set</h3>
+<figure><img src='shots/2026-11-24-1000-MGC-4H.jpg' data-ann='shots/2026-11-24-1000-MGC-4H.jpg' data-raw='shots/2026-11-24-1000-MGC-4H-raw.jpg' data-has-ann='1' loading='lazy' alt='4H chart 1000'><figcaption>4H · 10:00 AM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-24-1000-MGC-2H.jpg' data-ann='shots/2026-11-24-1000-MGC-2H.jpg' data-raw='shots/2026-11-24-1000-MGC-2H-raw.jpg' data-has-ann='1' loading='lazy' alt='2H chart 1000'><figcaption>2H · 10:00 AM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-24-1000-MGC-1H.jpg' data-ann='shots/2026-11-24-1000-MGC-1H.jpg' data-raw='shots/2026-11-24-1000-MGC-1H-raw.jpg' data-has-ann='1' loading='lazy' alt='1H chart 1000'><figcaption>1H · 10:00 AM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-24-1000-MGC-15m.jpg' data-ann='shots/2026-11-24-1000-MGC-15m.jpg' data-raw='shots/2026-11-24-1000-MGC-15m.jpg' data-has-ann='0' loading='lazy' alt='15m chart 1000'><figcaption>15m · 10:00 AM set · <span class='vlabel'>Raw — no annotated version</span></figcaption></figure>
+<h3 class='set-h'>2:00 PM set</h3>
+<figure><img src='shots/2026-11-24-1400-MGC-4H.jpg' data-ann='shots/2026-11-24-1400-MGC-4H.jpg' data-raw='shots/2026-11-24-1400-MGC-4H-raw.jpg' data-has-ann='1' loading='lazy' alt='4H chart 1400'><figcaption>4H · 2:00 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-24-1400-MGC-2H.jpg' data-ann='shots/2026-11-24-1400-MGC-2H.jpg' data-raw='shots/2026-11-24-1400-MGC-2H-raw.jpg' data-has-ann='1' loading='lazy' alt='2H chart 1400'><figcaption>2H · 2:00 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-24-1400-MGC-1H.jpg' data-ann='shots/2026-11-24-1400-MGC-1H.jpg' data-raw='shots/2026-11-24-1400-MGC-1H-raw.jpg' data-has-ann='1' loading='lazy' alt='1H chart 1400'><figcaption>1H · 2:00 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-24-1400-MGC-15m.jpg' data-ann='shots/2026-11-24-1400-MGC-15m.jpg' data-raw='shots/2026-11-24-1400-MGC-15m.jpg' data-has-ann='0' loading='lazy' alt='15m chart 1400'><figcaption>15m · 2:00 PM set · <span class='vlabel'>Raw — no annotated version</span></figcaption></figure>
+<h3 class='set-h'>4:30 PM set</h3>
+<figure><img src='shots/2026-11-24-1630-MGC-4H.jpg' data-ann='shots/2026-11-24-1630-MGC-4H.jpg' data-raw='shots/2026-11-24-1630-MGC-4H-raw.jpg' data-has-ann='1' loading='lazy' alt='4H chart 1630'><figcaption>4H · 4:30 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-24-1630-MGC-2H.jpg' data-ann='shots/2026-11-24-1630-MGC-2H.jpg' data-raw='shots/2026-11-24-1630-MGC-2H-raw.jpg' data-has-ann='1' loading='lazy' alt='2H chart 1630'><figcaption>2H · 4:30 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-24-1630-MGC-1H.jpg' data-ann='shots/2026-11-24-1630-MGC-1H.jpg' data-raw='shots/2026-11-24-1630-MGC-1H-raw.jpg' data-has-ann='1' loading='lazy' alt='1H chart 1630'><figcaption>1H · 4:30 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-24-1630-MGC-15m.jpg' data-ann='shots/2026-11-24-1630-MGC-15m.jpg' data-raw='shots/2026-11-24-1630-MGC-15m-raw.jpg' data-has-ann='1' loading='lazy' alt='15m chart 1630'><figcaption>15m · 4:30 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<h3 class='set-h'>6:00 PM set</h3>
+<figure><img src='shots/2026-11-24-1800-MGC-4H.jpg' data-ann='shots/2026-11-24-1800-MGC-4H.jpg' data-raw='shots/2026-11-24-1800-MGC-4H-raw.jpg' data-has-ann='1' loading='lazy' alt='4H chart 1800'><figcaption>4H · 6:00 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-24-1800-MGC-2H.jpg' data-ann='shots/2026-11-24-1800-MGC-2H.jpg' data-raw='shots/2026-11-24-1800-MGC-2H-raw.jpg' data-has-ann='1' loading='lazy' alt='2H chart 1800'><figcaption>2H · 6:00 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-24-1800-MGC-1H.jpg' data-ann='shots/2026-11-24-1800-MGC-1H.jpg' data-raw='shots/2026-11-24-1800-MGC-1H-raw.jpg' data-has-ann='1' loading='lazy' alt='1H chart 1800'><figcaption>1H · 6:00 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-24-1800-MGC-15m.jpg' data-ann='shots/2026-11-24-1800-MGC-15m.jpg' data-raw='shots/2026-11-24-1800-MGC-15m.jpg' data-has-ann='0' loading='lazy' alt='15m chart 1800'><figcaption>15m · 6:00 PM set · <span class='vlabel'>Raw — no annotated version</span></figcaption></figure>
+<h3 class='set-h'>10:00 PM set</h3>
+<figure><img src='shots/2026-11-24-2200-MGC-4H.jpg' data-ann='shots/2026-11-24-2200-MGC-4H.jpg' data-raw='shots/2026-11-24-2200-MGC-4H-raw.jpg' data-has-ann='1' loading='lazy' alt='4H chart 2200'><figcaption>4H · 10:00 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-24-2200-MGC-2H.jpg' data-ann='shots/2026-11-24-2200-MGC-2H.jpg' data-raw='shots/2026-11-24-2200-MGC-2H-raw.jpg' data-has-ann='1' loading='lazy' alt='2H chart 2200'><figcaption>2H · 10:00 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-24-2200-MGC-1H.jpg' data-ann='shots/2026-11-24-2200-MGC-1H.jpg' data-raw='shots/2026-11-24-2200-MGC-1H-raw.jpg' data-has-ann='1' loading='lazy' alt='1H chart 2200'><figcaption>1H · 10:00 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-24-2200-MGC-15m.jpg' data-ann='shots/2026-11-24-2200-MGC-15m.jpg' data-raw='shots/2026-11-24-2200-MGC-15m-raw.jpg' data-has-ann='1' loading='lazy' alt='15m chart 2200'><figcaption>15m · 10:00 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+</section>
+<section class='day-detail' id='day-2026-11-25' style='display:none'>
+<h3>Wed Nov 25, 2026 — 6 sets</h3>
+<table><tr><th>Time</th><th>4H</th><th>2H</th><th>1H</th><th>15m</th></tr><tr><td><b>2:00 AM</b></td><td><b>4H</b> 3,515.80<br><span class='chip below'>BELOW prior low</span></td><td><b>2H</b> 3,515.80<br><span class='chip below'>BELOW prior low</span></td><td><b>1H</b> 3,522.10<br><span class='chip inside'>INSIDE prior range</span></td><td><b>15m</b> 3,522.10<br><span class='chip inside'>INSIDE prior range</span></td></tr>
+<tr><td><b>6:00 AM</b></td><td><b>4H</b> 3,530.60<br><span class='chip inside'>INSIDE prior range</span></td><td><b>2H</b> 3,530.60<br><span class='chip inside'>INSIDE prior range</span></td><td><b>1H</b> 3,489.20<br><span class='chip below'>BELOW prior low</span></td><td><b>15m</b> 3,489.20<br><span class='chip below'>BELOW prior low</span></td></tr>
+<tr><td><b>10:00 AM</b></td><td><b>4H</b> 3,471.00<br><span class='chip below'>BELOW prior low</span></td><td><b>2H</b> 3,471.00<br><span class='chip below'>BELOW prior low</span></td><td><b>1H</b> 3,444.20<br><span class='chip below'>BELOW prior low</span></td><td><b>15m</b> 3,444.20<br><span class='chip inside'>INSIDE prior range</span></td></tr>
+<tr><td><b>2:00 PM</b></td><td><b>4H</b> 3,535.80<br><span class='chip above'>ABOVE prior high</span></td><td><b>2H</b> 3,535.80<br><span class='chip above'>ABOVE prior high</span></td><td><b>1H</b> 3,545.20<br><span class='chip inside'>INSIDE prior range</span></td><td><b>15m</b> 3,564.90<br><span class='chip above'>ABOVE prior high</span></td></tr>
+<tr><td><b>6:00 PM</b></td><td><b>4H</b> 3,617.70<br><span class='chip above'>ABOVE prior high</span></td><td><b>2H</b> 3,617.70<br><span class='chip above'>ABOVE prior high</span></td><td><b>1H</b> 3,603.60<br><span class='chip below'>BELOW prior low</span></td><td><b>15m</b> 3,604.20<br><span class='chip inside'>INSIDE prior range</span></td></tr>
+<tr><td><b>10:00 PM</b></td><td><b>4H</b> 3,615.90<br><span class='chip inside'>INSIDE prior range</span></td><td><b>2H</b> 3,615.90<br><span class='chip inside'>INSIDE prior range</span></td><td><b>1H</b> 3,601.90<br><span class='chip inside'>INSIDE prior range</span></td><td><b>15m</b> 3,601.90<br><span class='chip inside'>INSIDE prior range</span></td></tr></table>
+<div class='toggle' data-day='2026-11-25'><button class='on' data-mode='ann' onclick="setMode('2026-11-25','ann')">Annotated</button><button data-mode='raw' onclick="setMode('2026-11-25','raw')">Raw</button></div>
+<h3 class='set-h'>2:00 AM set</h3>
+<figure><img src='shots/2026-11-25-0200-MGC-4H.jpg' data-ann='shots/2026-11-25-0200-MGC-4H.jpg' data-raw='shots/2026-11-25-0200-MGC-4H-raw.jpg' data-has-ann='1' loading='lazy' alt='4H chart 0200'><figcaption>4H · 2:00 AM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-25-0200-MGC-2H.jpg' data-ann='shots/2026-11-25-0200-MGC-2H.jpg' data-raw='shots/2026-11-25-0200-MGC-2H-raw.jpg' data-has-ann='1' loading='lazy' alt='2H chart 0200'><figcaption>2H · 2:00 AM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-25-0200-MGC-1H.jpg' data-ann='shots/2026-11-25-0200-MGC-1H.jpg' data-raw='shots/2026-11-25-0200-MGC-1H-raw.jpg' data-has-ann='1' loading='lazy' alt='1H chart 0200'><figcaption>1H · 2:00 AM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-25-0200-MGC-15m.jpg' data-ann='shots/2026-11-25-0200-MGC-15m.jpg' data-raw='shots/2026-11-25-0200-MGC-15m-raw.jpg' data-has-ann='1' loading='lazy' alt='15m chart 0200'><figcaption>15m · 2:00 AM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<h3 class='set-h'>6:00 AM set</h3>
+<figure><img src='shots/2026-11-25-0600-MGC-4H.jpg' data-ann='shots/2026-11-25-0600-MGC-4H.jpg' data-raw='shots/2026-11-25-0600-MGC-4H-raw.jpg' data-has-ann='1' loading='lazy' alt='4H chart 0600'><figcaption>4H · 6:00 AM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-25-0600-MGC-2H.jpg' data-ann='shots/2026-11-25-0600-MGC-2H.jpg' data-raw='shots/2026-11-25-0600-MGC-2H-raw.jpg' data-has-ann='1' loading='lazy' alt='2H chart 0600'><figcaption>2H · 6:00 AM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-25-0600-MGC-1H.jpg' data-ann='shots/2026-11-25-0600-MGC-1H.jpg' data-raw='shots/2026-11-25-0600-MGC-1H-raw.jpg' data-has-ann='1' loading='lazy' alt='1H chart 0600'><figcaption>1H · 6:00 AM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-25-0600-MGC-15m.jpg' data-ann='shots/2026-11-25-0600-MGC-15m.jpg' data-raw='shots/2026-11-25-0600-MGC-15m-raw.jpg' data-has-ann='1' loading='lazy' alt='15m chart 0600'><figcaption>15m · 6:00 AM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<h3 class='set-h'>10:00 AM set</h3>
+<figure><img src='shots/2026-11-25-1000-MGC-4H.jpg' data-ann='shots/2026-11-25-1000-MGC-4H.jpg' data-raw='shots/2026-11-25-1000-MGC-4H-raw.jpg' data-has-ann='1' loading='lazy' alt='4H chart 1000'><figcaption>4H · 10:00 AM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-25-1000-MGC-2H.jpg' data-ann='shots/2026-11-25-1000-MGC-2H.jpg' data-raw='shots/2026-11-25-1000-MGC-2H-raw.jpg' data-has-ann='1' loading='lazy' alt='2H chart 1000'><figcaption>2H · 10:00 AM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-25-1000-MGC-1H.jpg' data-ann='shots/2026-11-25-1000-MGC-1H.jpg' data-raw='shots/2026-11-25-1000-MGC-1H-raw.jpg' data-has-ann='1' loading='lazy' alt='1H chart 1000'><figcaption>1H · 10:00 AM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-25-1000-MGC-15m.jpg' data-ann='shots/2026-11-25-1000-MGC-15m.jpg' data-raw='shots/2026-11-25-1000-MGC-15m.jpg' data-has-ann='0' loading='lazy' alt='15m chart 1000'><figcaption>15m · 10:00 AM set · <span class='vlabel'>Raw — no annotated version</span></figcaption></figure>
+<h3 class='set-h'>2:00 PM set</h3>
+<figure><img src='shots/2026-11-25-1400-MGC-4H.jpg' data-ann='shots/2026-11-25-1400-MGC-4H.jpg' data-raw='shots/2026-11-25-1400-MGC-4H-raw.jpg' data-has-ann='1' loading='lazy' alt='4H chart 1400'><figcaption>4H · 2:00 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-25-1400-MGC-2H.jpg' data-ann='shots/2026-11-25-1400-MGC-2H.jpg' data-raw='shots/2026-11-25-1400-MGC-2H-raw.jpg' data-has-ann='1' loading='lazy' alt='2H chart 1400'><figcaption>2H · 2:00 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-25-1400-MGC-1H.jpg' data-ann='shots/2026-11-25-1400-MGC-1H.jpg' data-raw='shots/2026-11-25-1400-MGC-1H-raw.jpg' data-has-ann='1' loading='lazy' alt='1H chart 1400'><figcaption>1H · 2:00 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-25-1400-MGC-15m.jpg' data-ann='shots/2026-11-25-1400-MGC-15m.jpg' data-raw='shots/2026-11-25-1400-MGC-15m-raw.jpg' data-has-ann='1' loading='lazy' alt='15m chart 1400'><figcaption>15m · 2:00 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<h3 class='set-h'>6:00 PM set</h3>
+<figure><img src='shots/2026-11-25-1800-MGC-4H.jpg' data-ann='shots/2026-11-25-1800-MGC-4H.jpg' data-raw='shots/2026-11-25-1800-MGC-4H-raw.jpg' data-has-ann='1' loading='lazy' alt='4H chart 1800'><figcaption>4H · 6:00 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-25-1800-MGC-2H.jpg' data-ann='shots/2026-11-25-1800-MGC-2H.jpg' data-raw='shots/2026-11-25-1800-MGC-2H-raw.jpg' data-has-ann='1' loading='lazy' alt='2H chart 1800'><figcaption>2H · 6:00 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-25-1800-MGC-1H.jpg' data-ann='shots/2026-11-25-1800-MGC-1H.jpg' data-raw='shots/2026-11-25-1800-MGC-1H-raw.jpg' data-has-ann='1' loading='lazy' alt='1H chart 1800'><figcaption>1H · 6:00 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-25-1800-MGC-15m.jpg' data-ann='shots/2026-11-25-1800-MGC-15m.jpg' data-raw='shots/2026-11-25-1800-MGC-15m-raw.jpg' data-has-ann='1' loading='lazy' alt='15m chart 1800'><figcaption>15m · 6:00 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<h3 class='set-h'>10:00 PM set</h3>
+<figure><img src='shots/2026-11-25-2200-MGC-4H.jpg' data-ann='shots/2026-11-25-2200-MGC-4H.jpg' data-raw='shots/2026-11-25-2200-MGC-4H-raw.jpg' data-has-ann='1' loading='lazy' alt='4H chart 2200'><figcaption>4H · 10:00 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-25-2200-MGC-2H.jpg' data-ann='shots/2026-11-25-2200-MGC-2H.jpg' data-raw='shots/2026-11-25-2200-MGC-2H-raw.jpg' data-has-ann='1' loading='lazy' alt='2H chart 2200'><figcaption>2H · 10:00 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-25-2200-MGC-1H.jpg' data-ann='shots/2026-11-25-2200-MGC-1H.jpg' data-raw='shots/2026-11-25-2200-MGC-1H-raw.jpg' data-has-ann='1' loading='lazy' alt='1H chart 2200'><figcaption>1H · 10:00 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-25-2200-MGC-15m.jpg' data-ann='shots/2026-11-25-2200-MGC-15m.jpg' data-raw='shots/2026-11-25-2200-MGC-15m-raw.jpg' data-has-ann='1' loading='lazy' alt='15m chart 2200'><figcaption>15m · 10:00 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+</section>
+<section class='day-detail' id='day-2026-11-26' style='display:none'>
+<h3>Thu Nov 26, 2026 — 6 sets</h3>
+<table><tr><th>Time</th><th>4H</th><th>2H</th><th>1H</th><th>15m</th></tr><tr><td><b>2:00 AM</b></td><td><b>4H</b> 3,597.20<br><span class='chip inside'>INSIDE prior range</span></td><td><b>2H</b> 3,597.20<br><span class='chip below'>BELOW prior low</span></td><td><b>1H</b> 3,592.30<br><span class='chip inside'>INSIDE prior range</span></td><td><b>15m</b> 3,592.30<br><span class='chip below'>BELOW prior low</span></td></tr>
+<tr><td><b>6:00 AM</b></td><td><b>4H</b> 3,582.80<br><span class='chip below'>BELOW prior low</span></td><td><b>2H</b> 3,582.80<br><span class='chip below'>BELOW prior low</span></td><td><b>1H</b> 3,593.80<br><span class='chip inside'>INSIDE prior range</span></td><td><b>15m</b> 3,593.80<br><span class='chip inside'>INSIDE prior range</span></td></tr>
+<tr><td><b>10:00 AM</b></td><td><b>4H</b> 3,608.90<br><span class='chip above'>ABOVE prior high</span></td><td><b>2H</b> 3,608.90<br><span class='chip above'>ABOVE prior high</span></td><td><b>1H</b> 3,600.60<br><span class='chip inside'>INSIDE prior range</span></td><td><b>15m</b> 3,600.60<br><span class='chip inside'>INSIDE prior range</span></td></tr>
+<tr><td><b>2:00 PM</b></td><td><b>4H</b> 3,594.70<br><span class='chip inside'>INSIDE prior range</span></td><td><b>2H</b> 3,594.70<br><span class='chip below'>BELOW prior low</span></td><td><b>1H</b> 3,594.70<br><span class='chip below'>BELOW prior low</span></td><td><b>15m</b> 3,594.70<br><span class='chip inside'>INSIDE prior range</span></td></tr>
+<tr><td><b>6:00 PM</b></td><td><b>4H</b> 3,594.70<br><span class='chip inside'>INSIDE prior range</span></td><td><b>2H</b> 3,594.70<br><span class='chip below'>BELOW prior low</span></td><td><b>1H</b> 3,594.40<br><span class='chip inside'>INSIDE prior range</span></td><td><b>15m</b> 3,594.40<br><span class='chip inside'>INSIDE prior range</span></td></tr>
+<tr><td><b>10:00 PM</b></td><td><b>4H</b> 3,650.00<br><span class='chip above'>ABOVE prior high</span></td><td><b>2H</b> 3,650.00<br><span class='chip above'>ABOVE prior high</span></td><td><b>1H</b> 3,656.50<br><span class='chip inside'>INSIDE prior range</span></td><td><b>15m</b> 3,656.50<br><span class='chip inside'>INSIDE prior range</span></td></tr></table>
+<div class='toggle' data-day='2026-11-26'><button class='on' data-mode='ann' onclick="setMode('2026-11-26','ann')">Annotated</button><button data-mode='raw' onclick="setMode('2026-11-26','raw')">Raw</button></div>
+<h3 class='set-h'>2:00 AM set</h3>
+<figure><img src='shots/2026-11-26-0200-MGC-4H.jpg' data-ann='shots/2026-11-26-0200-MGC-4H.jpg' data-raw='shots/2026-11-26-0200-MGC-4H-raw.jpg' data-has-ann='1' loading='lazy' alt='4H chart 0200'><figcaption>4H · 2:00 AM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-26-0200-MGC-2H.jpg' data-ann='shots/2026-11-26-0200-MGC-2H.jpg' data-raw='shots/2026-11-26-0200-MGC-2H-raw.jpg' data-has-ann='1' loading='lazy' alt='2H chart 0200'><figcaption>2H · 2:00 AM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-26-0200-MGC-1H.jpg' data-ann='shots/2026-11-26-0200-MGC-1H.jpg' data-raw='shots/2026-11-26-0200-MGC-1H-raw.jpg' data-has-ann='1' loading='lazy' alt='1H chart 0200'><figcaption>1H · 2:00 AM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-26-0200-MGC-15m.jpg' data-ann='shots/2026-11-26-0200-MGC-15m.jpg' data-raw='shots/2026-11-26-0200-MGC-15m-raw.jpg' data-has-ann='1' loading='lazy' alt='15m chart 0200'><figcaption>15m · 2:00 AM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<h3 class='set-h'>6:00 AM set</h3>
+<figure><img src='shots/2026-11-26-0600-MGC-4H.jpg' data-ann='shots/2026-11-26-0600-MGC-4H.jpg' data-raw='shots/2026-11-26-0600-MGC-4H-raw.jpg' data-has-ann='1' loading='lazy' alt='4H chart 0600'><figcaption>4H · 6:00 AM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-26-0600-MGC-2H.jpg' data-ann='shots/2026-11-26-0600-MGC-2H.jpg' data-raw='shots/2026-11-26-0600-MGC-2H-raw.jpg' data-has-ann='1' loading='lazy' alt='2H chart 0600'><figcaption>2H · 6:00 AM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-26-0600-MGC-1H.jpg' data-ann='shots/2026-11-26-0600-MGC-1H.jpg' data-raw='shots/2026-11-26-0600-MGC-1H-raw.jpg' data-has-ann='1' loading='lazy' alt='1H chart 0600'><figcaption>1H · 6:00 AM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-26-0600-MGC-15m.jpg' data-ann='shots/2026-11-26-0600-MGC-15m.jpg' data-raw='shots/2026-11-26-0600-MGC-15m-raw.jpg' data-has-ann='1' loading='lazy' alt='15m chart 0600'><figcaption>15m · 6:00 AM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<h3 class='set-h'>10:00 AM set</h3>
+<figure><img src='shots/2026-11-26-1000-MGC-4H.jpg' data-ann='shots/2026-11-26-1000-MGC-4H.jpg' data-raw='shots/2026-11-26-1000-MGC-4H-raw.jpg' data-has-ann='1' loading='lazy' alt='4H chart 1000'><figcaption>4H · 10:00 AM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-26-1000-MGC-2H.jpg' data-ann='shots/2026-11-26-1000-MGC-2H.jpg' data-raw='shots/2026-11-26-1000-MGC-2H-raw.jpg' data-has-ann='1' loading='lazy' alt='2H chart 1000'><figcaption>2H · 10:00 AM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-26-1000-MGC-1H.jpg' data-ann='shots/2026-11-26-1000-MGC-1H.jpg' data-raw='shots/2026-11-26-1000-MGC-1H-raw.jpg' data-has-ann='1' loading='lazy' alt='1H chart 1000'><figcaption>1H · 10:00 AM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-26-1000-MGC-15m.jpg' data-ann='shots/2026-11-26-1000-MGC-15m.jpg' data-raw='shots/2026-11-26-1000-MGC-15m-raw.jpg' data-has-ann='1' loading='lazy' alt='15m chart 1000'><figcaption>15m · 10:00 AM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<h3 class='set-h'>2:00 PM set</h3>
+<figure><img src='shots/2026-11-26-1400-MGC-4H.jpg' data-ann='shots/2026-11-26-1400-MGC-4H.jpg' data-raw='shots/2026-11-26-1400-MGC-4H-raw.jpg' data-has-ann='1' loading='lazy' alt='4H chart 1400'><figcaption>4H · 2:00 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-26-1400-MGC-2H.jpg' data-ann='shots/2026-11-26-1400-MGC-2H.jpg' data-raw='shots/2026-11-26-1400-MGC-2H-raw.jpg' data-has-ann='1' loading='lazy' alt='2H chart 1400'><figcaption>2H · 2:00 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-26-1400-MGC-1H.jpg' data-ann='shots/2026-11-26-1400-MGC-1H.jpg' data-raw='shots/2026-11-26-1400-MGC-1H-raw.jpg' data-has-ann='1' loading='lazy' alt='1H chart 1400'><figcaption>1H · 2:00 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-26-1400-MGC-15m.jpg' data-ann='shots/2026-11-26-1400-MGC-15m.jpg' data-raw='shots/2026-11-26-1400-MGC-15m-raw.jpg' data-has-ann='1' loading='lazy' alt='15m chart 1400'><figcaption>15m · 2:00 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<h3 class='set-h'>6:00 PM set</h3>
+<figure><img src='shots/2026-11-26-1800-MGC-4H.jpg' data-ann='shots/2026-11-26-1800-MGC-4H.jpg' data-raw='shots/2026-11-26-1800-MGC-4H-raw.jpg' data-has-ann='1' loading='lazy' alt='4H chart 1800'><figcaption>4H · 6:00 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-26-1800-MGC-2H.jpg' data-ann='shots/2026-11-26-1800-MGC-2H.jpg' data-raw='shots/2026-11-26-1800-MGC-2H-raw.jpg' data-has-ann='1' loading='lazy' alt='2H chart 1800'><figcaption>2H · 6:00 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-26-1800-MGC-1H.jpg' data-ann='shots/2026-11-26-1800-MGC-1H.jpg' data-raw='shots/2026-11-26-1800-MGC-1H-raw.jpg' data-has-ann='1' loading='lazy' alt='1H chart 1800'><figcaption>1H · 6:00 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-26-1800-MGC-15m.jpg' data-ann='shots/2026-11-26-1800-MGC-15m.jpg' data-raw='shots/2026-11-26-1800-MGC-15m.jpg' data-has-ann='0' loading='lazy' alt='15m chart 1800'><figcaption>15m · 6:00 PM set · <span class='vlabel'>Raw — no annotated version</span></figcaption></figure>
+<h3 class='set-h'>10:00 PM set</h3>
+<figure><img src='shots/2026-11-26-2200-MGC-4H.jpg' data-ann='shots/2026-11-26-2200-MGC-4H.jpg' data-raw='shots/2026-11-26-2200-MGC-4H-raw.jpg' data-has-ann='1' loading='lazy' alt='4H chart 2200'><figcaption>4H · 10:00 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-26-2200-MGC-2H.jpg' data-ann='shots/2026-11-26-2200-MGC-2H.jpg' data-raw='shots/2026-11-26-2200-MGC-2H-raw.jpg' data-has-ann='1' loading='lazy' alt='2H chart 2200'><figcaption>2H · 10:00 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-26-2200-MGC-1H.jpg' data-ann='shots/2026-11-26-2200-MGC-1H.jpg' data-raw='shots/2026-11-26-2200-MGC-1H-raw.jpg' data-has-ann='1' loading='lazy' alt='1H chart 2200'><figcaption>1H · 10:00 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-26-2200-MGC-15m.jpg' data-ann='shots/2026-11-26-2200-MGC-15m.jpg' data-raw='shots/2026-11-26-2200-MGC-15m-raw.jpg' data-has-ann='1' loading='lazy' alt='15m chart 2200'><figcaption>15m · 10:00 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+</section>
+<section class='day-detail' id='day-2026-11-27' style='display:block'>
+<h3>Fri Nov 27, 2026 — 7 sets</h3>
+<table><tr><th>Time</th><th>4H</th><th>2H</th><th>1H</th><th>15m</th></tr><tr><td><b>2:00 AM</b></td><td><b>4H</b> 3,682.20<br><span class='chip above'>ABOVE prior high</span></td><td><b>2H</b> 3,682.20<br><span class='chip above'>ABOVE prior high</span></td><td><b>1H</b> 3,686.00<br><span class='chip above'>ABOVE prior high</span></td><td><b>15m</b> 3,686.00<br><span class='chip inside'>INSIDE prior range</span></td></tr>
+<tr><td><b>6:00 AM</b></td><td><b>4H</b> 3,707.30<br><span class='chip above'>ABOVE prior high</span></td><td><b>2H</b> 3,707.30<br><span class='chip inside'>INSIDE prior range</span></td><td><b>1H</b> 3,701.10<br><span class='chip inside'>INSIDE prior range</span></td><td><b>15m</b> 3,701.10<br><span class='chip inside'>INSIDE prior range</span></td></tr>
+<tr><td><b>10:00 AM</b></td><td><b>4H</b> 3,663.90<br><span class='chip below'>BELOW prior low</span></td><td><b>2H</b> 3,663.90<br><span class='chip below'>BELOW prior low</span></td><td><b>1H</b> 3,654.10<br><span class='chip inside'>INSIDE prior range</span></td><td><b>15m</b> 3,654.10<br><span class='chip inside'>INSIDE prior range</span></td></tr>
+<tr><td><b>2:00 PM</b></td><td><b>4H</b> 3,668.70<br><span class='chip inside'>INSIDE prior range</span></td><td><b>2H</b> 3,668.70<br><span class='chip inside'>INSIDE prior range</span></td><td><b>1H</b> 3,668.70<br><span class='chip above'>ABOVE prior high</span></td><td><b>15m</b><br><span class='muted'>—</span></td></tr>
+<tr><td><b>6:00 PM</b></td><td><b>4H</b> 3,668.70<br><span class='chip inside'>INSIDE prior range</span></td><td><b>2H</b> 3,668.70<br><span class='chip above'>ABOVE prior high</span></td><td><b>1H</b> 3,668.70<br><span class='chip inside'>INSIDE prior range</span></td><td><b>15m</b><br><span class='muted'>—</span></td></tr>
+<tr><td><b>10:00 PM</b></td><td><b>4H</b> 3,668.70<br><span class='chip inside'>INSIDE prior range</span></td><td><b>2H</b> 3,668.70<br><span class='chip above'>ABOVE prior high</span></td><td><b>1H</b> 3,668.70<br><span class='chip inside'>INSIDE prior range</span></td><td><b>15m</b><br><span class='muted'>—</span></td></tr></table>
+<div class='toggle' data-day='2026-11-27'><button class='on' data-mode='ann' onclick="setMode('2026-11-27','ann')">Annotated</button><button data-mode='raw' onclick="setMode('2026-11-27','raw')">Raw</button></div>
+<h3 class='set-h'>2:00 AM set</h3>
+<figure><img src='shots/2026-11-27-0200-MGC-4H.jpg' data-ann='shots/2026-11-27-0200-MGC-4H.jpg' data-raw='shots/2026-11-27-0200-MGC-4H-raw.jpg' data-has-ann='1' loading='lazy' alt='4H chart 0200'><figcaption>4H · 2:00 AM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-27-0200-MGC-2H.jpg' data-ann='shots/2026-11-27-0200-MGC-2H.jpg' data-raw='shots/2026-11-27-0200-MGC-2H-raw.jpg' data-has-ann='1' loading='lazy' alt='2H chart 0200'><figcaption>2H · 2:00 AM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-27-0200-MGC-1H.jpg' data-ann='shots/2026-11-27-0200-MGC-1H.jpg' data-raw='shots/2026-11-27-0200-MGC-1H-raw.jpg' data-has-ann='1' loading='lazy' alt='1H chart 0200'><figcaption>1H · 2:00 AM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-27-0200-MGC-15m.jpg' data-ann='shots/2026-11-27-0200-MGC-15m.jpg' data-raw='shots/2026-11-27-0200-MGC-15m-raw.jpg' data-has-ann='1' loading='lazy' alt='15m chart 0200'><figcaption>15m · 2:00 AM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<h3 class='set-h'>6:00 AM set</h3>
+<figure><img src='shots/2026-11-27-0600-MGC-4H.jpg' data-ann='shots/2026-11-27-0600-MGC-4H.jpg' data-raw='shots/2026-11-27-0600-MGC-4H-raw.jpg' data-has-ann='1' loading='lazy' alt='4H chart 0600'><figcaption>4H · 6:00 AM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-27-0600-MGC-2H.jpg' data-ann='shots/2026-11-27-0600-MGC-2H.jpg' data-raw='shots/2026-11-27-0600-MGC-2H-raw.jpg' data-has-ann='1' loading='lazy' alt='2H chart 0600'><figcaption>2H · 6:00 AM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-27-0600-MGC-1H.jpg' data-ann='shots/2026-11-27-0600-MGC-1H.jpg' data-raw='shots/2026-11-27-0600-MGC-1H-raw.jpg' data-has-ann='1' loading='lazy' alt='1H chart 0600'><figcaption>1H · 6:00 AM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-27-0600-MGC-15m.jpg' data-ann='shots/2026-11-27-0600-MGC-15m.jpg' data-raw='shots/2026-11-27-0600-MGC-15m-raw.jpg' data-has-ann='1' loading='lazy' alt='15m chart 0600'><figcaption>15m · 6:00 AM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<h3 class='set-h'>10:00 AM set</h3>
+<figure><img src='shots/2026-11-27-1000-MGC-4H.jpg' data-ann='shots/2026-11-27-1000-MGC-4H.jpg' data-raw='shots/2026-11-27-1000-MGC-4H-raw.jpg' data-has-ann='1' loading='lazy' alt='4H chart 1000'><figcaption>4H · 10:00 AM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-27-1000-MGC-2H.jpg' data-ann='shots/2026-11-27-1000-MGC-2H.jpg' data-raw='shots/2026-11-27-1000-MGC-2H-raw.jpg' data-has-ann='1' loading='lazy' alt='2H chart 1000'><figcaption>2H · 10:00 AM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-27-1000-MGC-1H.jpg' data-ann='shots/2026-11-27-1000-MGC-1H.jpg' data-raw='shots/2026-11-27-1000-MGC-1H-raw.jpg' data-has-ann='1' loading='lazy' alt='1H chart 1000'><figcaption>1H · 10:00 AM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-27-1000-MGC-15m.jpg' data-ann='shots/2026-11-27-1000-MGC-15m.jpg' data-raw='shots/2026-11-27-1000-MGC-15m-raw.jpg' data-has-ann='1' loading='lazy' alt='15m chart 1000'><figcaption>15m · 10:00 AM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<h3 class='set-h'>2:00 PM set</h3>
+<figure><img src='shots/2026-11-27-1400-MGC-4H.jpg' data-ann='shots/2026-11-27-1400-MGC-4H.jpg' data-raw='shots/2026-11-27-1400-MGC-4H-raw.jpg' data-has-ann='1' loading='lazy' alt='4H chart 1400'><figcaption>4H · 2:00 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-27-1400-MGC-2H.jpg' data-ann='shots/2026-11-27-1400-MGC-2H.jpg' data-raw='shots/2026-11-27-1400-MGC-2H-raw.jpg' data-has-ann='1' loading='lazy' alt='2H chart 1400'><figcaption>2H · 2:00 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-27-1400-MGC-1H.jpg' data-ann='shots/2026-11-27-1400-MGC-1H.jpg' data-raw='shots/2026-11-27-1400-MGC-1H-raw.jpg' data-has-ann='1' loading='lazy' alt='1H chart 1400'><figcaption>1H · 2:00 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-27-1400-MGC-15m.jpg' data-ann='shots/2026-11-27-1400-MGC-15m.jpg' data-raw='shots/2026-11-27-1400-MGC-15m-raw.jpg' data-has-ann='1' loading='lazy' alt='15m chart 1400'><figcaption>15m · 2:00 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<h3 class='set-h'>4:30 PM set</h3>
+<figure><img src='shots/2026-11-27-1630-MGC-4H.jpg' data-ann='shots/2026-11-27-1630-MGC-4H.jpg' data-raw='shots/2026-11-27-1630-MGC-4H-raw.jpg' data-has-ann='1' loading='lazy' alt='4H chart 1630'><figcaption>4H · 4:30 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-27-1630-MGC-2H.jpg' data-ann='shots/2026-11-27-1630-MGC-2H.jpg' data-raw='shots/2026-11-27-1630-MGC-2H-raw.jpg' data-has-ann='1' loading='lazy' alt='2H chart 1630'><figcaption>2H · 4:30 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-27-1630-MGC-1H.jpg' data-ann='shots/2026-11-27-1630-MGC-1H.jpg' data-raw='shots/2026-11-27-1630-MGC-1H-raw.jpg' data-has-ann='1' loading='lazy' alt='1H chart 1630'><figcaption>1H · 4:30 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-27-1630-MGC-15m.jpg' data-ann='shots/2026-11-27-1630-MGC-15m.jpg' data-raw='shots/2026-11-27-1630-MGC-15m-raw.jpg' data-has-ann='1' loading='lazy' alt='15m chart 1630'><figcaption>15m · 4:30 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<h3 class='set-h'>6:00 PM set</h3>
+<figure><img src='shots/2026-11-27-1800-MGC-4H.jpg' data-ann='shots/2026-11-27-1800-MGC-4H.jpg' data-raw='shots/2026-11-27-1800-MGC-4H-raw.jpg' data-has-ann='1' loading='lazy' alt='4H chart 1800'><figcaption>4H · 6:00 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-27-1800-MGC-2H.jpg' data-ann='shots/2026-11-27-1800-MGC-2H.jpg' data-raw='shots/2026-11-27-1800-MGC-2H-raw.jpg' data-has-ann='1' loading='lazy' alt='2H chart 1800'><figcaption>2H · 6:00 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-27-1800-MGC-1H.jpg' data-ann='shots/2026-11-27-1800-MGC-1H.jpg' data-raw='shots/2026-11-27-1800-MGC-1H-raw.jpg' data-has-ann='1' loading='lazy' alt='1H chart 1800'><figcaption>1H · 6:00 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-27-1800-MGC-15m.jpg' data-ann='shots/2026-11-27-1800-MGC-15m.jpg' data-raw='shots/2026-11-27-1800-MGC-15m-raw.jpg' data-has-ann='1' loading='lazy' alt='15m chart 1800'><figcaption>15m · 6:00 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<h3 class='set-h'>10:00 PM set</h3>
+<figure><img src='shots/2026-11-27-2200-MGC-4H.jpg' data-ann='shots/2026-11-27-2200-MGC-4H.jpg' data-raw='shots/2026-11-27-2200-MGC-4H-raw.jpg' data-has-ann='1' loading='lazy' alt='4H chart 2200'><figcaption>4H · 10:00 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-27-2200-MGC-2H.jpg' data-ann='shots/2026-11-27-2200-MGC-2H.jpg' data-raw='shots/2026-11-27-2200-MGC-2H-raw.jpg' data-has-ann='1' loading='lazy' alt='2H chart 2200'><figcaption>2H · 10:00 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-27-2200-MGC-1H.jpg' data-ann='shots/2026-11-27-2200-MGC-1H.jpg' data-raw='shots/2026-11-27-2200-MGC-1H-raw.jpg' data-has-ann='1' loading='lazy' alt='1H chart 2200'><figcaption>1H · 10:00 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+<figure><img src='shots/2026-11-27-2200-MGC-15m.jpg' data-ann='shots/2026-11-27-2200-MGC-15m.jpg' data-raw='shots/2026-11-27-2200-MGC-15m-raw.jpg' data-has-ann='1' loading='lazy' alt='15m chart 2200'><figcaption>15m · 10:00 PM set · <span class='vlabel'>Annotated</span></figcaption></figure>
+</section>
+</div>
+<div class='card'><h2>Personal Lockout journal</h2>
+<p class='muted'>This journal is a record and a reminder only. It does NOT block trading in Tradesea — only the Lockout tab in the Tradesea phone app (Settings &gt; Lockout) actually blocks trading.</p>
+<p class='muted'>No lockouts logged in the Trading Brief yet.</p>
+<div id='local-lockouts'></div>
+<form id='lock-form'><label class='muted'>Log a lockout on this device</label><select id='lock-account'><option>TEST013</option><option>TEST012</option></select><select id='lock-dur'><option value='1'>1 hour</option><option value='3'>3 hours</option><option value='5'>5 hours</option><option value='10'>10 hours</option><option value='24'>All day</option></select><input type='text' id='lock-reason' placeholder='Reason (optional)'><button type='submit'>Log lockout</button></form></div>
+<div class='footline'>&bull; STICK TO THE PLAN &bull; STAY DISCIPLINED &bull; PROTECT YOUR CAPITAL &bull;</div>
+<p class='muted center'>Risk defense only — no trade suggestions. Data: Tradesea only, no public fallback. This page is public — balances and trades are visible to anyone with the link.</p>
+<script>
+function ckKey(){return 'tb-check-v1-'+document.body.dataset.day;}
+function loadCk(){try{return JSON.parse(localStorage.getItem(ckKey())||'{}');}catch(e){return {};}}
+function saveCk(v){localStorage.setItem(ckKey(),JSON.stringify(v));}
+function lockKey(){return 'tb-lockouts-v1';}
+function loadLocks(){try{return JSON.parse(localStorage.getItem(lockKey())||'[]');}catch(e){return [];}}
+function saveLocks(v){localStorage.setItem(lockKey(),JSON.stringify(v));}
+function activeLock(locks){
+  const now=Date.now();
+  for(const l of locks){ if(l.startMs + l.durHrs*3600*1000 > now) return l; }
+  return null;
+}
+function renderLocks(){
+  const locks=loadLocks();
+  const el=document.getElementById('local-lockouts');
+  if(!el) return;
+  if(!locks.length){ el.innerHTML='<p class="muted">No lockouts logged on this device yet.</p>'; return; }
+  el.innerHTML=locks.slice().reverse().map((l,i)=>{
+    const idx=locks.length-1-i;
+    const active = l.startMs + l.durHrs*3600*1000 > Date.now();
+    const when=new Date(l.startMs).toLocaleString('en-US',{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'});
+    return '<div class="check"><div style="flex:1"><div class="t">'+l.account+' — '+(active?'ACTIVE':'ended')+'</div>'
+      +'<div class="s">'+when+' · '+(l.durHrs>=24?'All day':l.durHrs+' hrs')+(l.reason?' · '+l.reason:'')+' · this device only</div></div>'
+      +'<button class="ghost" onclick="delLock('+idx+')">Delete</button></div>';
+  }).join('');
+}
+function delLock(i){ const l=loadLocks(); l.splice(i,1); saveLocks(l); renderLocks(); applyLockState(); }
+function applyLockState(){
+  const serverActive = document.body.dataset.serverLock==='1';
+  const local = activeLock(loadLocks());
+  const banner=document.getElementById('lock-banner');
+  const list=document.getElementById('checklist');
+  if(serverActive || local){
+    banner.style.display='block';
+    const who = serverActive ? 'logged in the Trading Brief' : (local? local.account+' · '+new Date(local.startMs).toLocaleString('en-US',{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'}) : '');
+    document.getElementById('lock-banner-text').textContent =
+      'LOCKED OUT — no trading. '+(serverActive?'Lockout '+who+'. ':'')+(local?'Local lockout '+who+'. ':'')+'Checklist is in no-trading mode until it lifts.';
+    if(list) list.classList.add('no-trade');
+  } else {
+    banner.style.display='none';
+    if(list) list.classList.remove('no-trade');
+  }
+}
+function showDay(day){
+  document.querySelectorAll('.day-detail').forEach(s=>{
+    s.style.display = (s.id === 'day-'+day) ? 'block' : 'none';
+  });
+  document.querySelectorAll('.cal button.has').forEach(b=>{
+    b.classList.toggle('sel', b.dataset.day === day);
+  });
+  const sec=document.getElementById('day-'+day);
+  if(sec) sec.scrollIntoView({behavior:'smooth',block:'start'});
+}
+function setMode(day, mode){
+  const sec=document.getElementById('day-'+day);
+  if(!sec) return;
+  sec.querySelectorAll('img[data-ann]').forEach(img=>{
+    const useAnn = (mode === 'ann' && img.dataset.hasAnn === '1');
+    img.src = useAnn ? img.dataset.ann : img.dataset.raw;
+    const lab=img.closest('figure').querySelector('.vlabel');
+    if(lab) lab.textContent = useAnn ? 'Annotated' : 'Raw — no annotated version';
+  });
+  sec.querySelectorAll('.toggle button').forEach(b=>{
+    b.classList.toggle('on', b.dataset.mode === mode);
+  });
+}
+document.addEventListener('DOMContentLoaded',()=>{
+  const cks=loadCk();
+  document.querySelectorAll('#checklist input[type=checkbox]').forEach(cb=>{
+    cb.checked=!!cks[cb.dataset.key];
+    cb.addEventListener('change',()=>{
+      const v=loadCk(); v[cb.dataset.key]=cb.checked; saveCk(v); updateProgress();
+    });
+  });
+  updateProgress();
+  renderLocks();
+  applyLockState();
+  const form=document.getElementById('lock-form');
+  if(form) form.addEventListener('submit',(e)=>{
+    e.preventDefault();
+    const account=document.getElementById('lock-account').value;
+    const dur=document.getElementById('lock-dur').value;
+    const reason=document.getElementById('lock-reason').value.trim();
+    const locks=loadLocks();
+    locks.push({account:account,startMs:Date.now(),durHrs:parseFloat(dur),reason:reason});
+    saveLocks(locks);
+    document.getElementById('lock-reason').value='';
+    renderLocks(); applyLockState();
+  });
+});
+function updateProgress(){
+  const boxes=document.querySelectorAll('#checklist input[type=checkbox]');
+  let n=0; boxes.forEach(b=>{if(b.checked)n++;});
+  const el=document.getElementById('ck-progress');
+  if(el) el.textContent=n+' / '+boxes.length+' checked';
+}
+</script></div></body></html>
